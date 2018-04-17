@@ -20,10 +20,10 @@ public class StoreController {
 		}
 	}
 	
-	public void addProduct(Product p){
+	public String addProduct(Product p){
 		try {
 
-			io.addNewProduct(p);
+			return io.addNewProduct(p);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -31,6 +31,7 @@ public class StoreController {
 		catch(IOException e){
 			e.printStackTrace();
 		}
+		return "error";
 	}
 	public ArrayList<Product> getProductsCategory(String cat){
 		return io.getProductsCategory(cat);

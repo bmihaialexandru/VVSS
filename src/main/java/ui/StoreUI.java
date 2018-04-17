@@ -29,9 +29,15 @@ public class StoreUI {
 
     public void AddNewProduct()
     {
+        int pCode,pQunatity;
         System.out.println("Give the Product code:");
-        int pCode = Integer.parseInt(in.nextLine());
-
+        try {
+            pCode = Integer.parseInt(in.nextLine());
+        }
+        catch (NumberFormatException e){
+            System.out.println("Code must be a number");
+            return;
+        }
         System.out.println("Give the product name:");
         String pName = in.nextLine();
 
@@ -39,11 +45,20 @@ public class StoreUI {
         String pCategory = in.nextLine();
 
         System.out.println("Give the quantity:");
-        int pQunatity = Integer.parseInt(in.nextLine());
-
+        try{
+            pQunatity = Integer.parseInt(in.nextLine());
+        }
+        catch (NumberFormatException e){
+            System.out.println("Quantity must be a number");
+            return;
+        }
         Product p = new Product(pCode,pName,pCategory,pQunatity);
-        ctrl.addProduct(p);
-        System.out.println("Product Added");
+        String s=ctrl.addProduct(p);
+        if(!s.equals("success")){
+            System.out.println("Product not added");
+        }
+        else
+            System.out.println("Product Added");
     }
 
     public void DisplayCategory()

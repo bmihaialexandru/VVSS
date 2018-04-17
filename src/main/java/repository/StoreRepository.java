@@ -29,7 +29,7 @@ public class StoreRepository {
 		in.close();
 	}
 	public String addNewProduct(Product p) throws IOException {
-		if(p.getCode()>0 && p.getQuantity()>=0 && p.getCode()< Integer.MAX_VALUE&&p.getQuantity()< Integer.MAX_VALUE&& !illegal(p.getName())){
+		if(p.getCode()>0 && p.getQuantity()>0 && p.getCode()< Integer.MAX_VALUE&&p.getQuantity()< Integer.MAX_VALUE&& !illegal(p.getName())){
 			BufferedWriter out = new BufferedWriter(new FileWriter("products.txt",true));
 			int k=1;
 			for(Product i:allProducts){
