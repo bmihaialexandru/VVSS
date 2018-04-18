@@ -3,6 +3,8 @@ package repository;
 import com.sun.javaws.exceptions.InvalidArgumentException;
 import model.Product;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 /**
@@ -76,6 +78,28 @@ public class StoreRepositoryTest {
         String s=repo.addNewProduct(pinvalid5);
         assertEquals("code q", s);
     }
+
+    @org.junit.Test
+    public void listCategoryEmptyList() throws Exception {
+        ArrayList<Product> s=repo.getProductsCategory("a");
+        assertEquals(s.size(), 0);
+    }
+
+
+    @org.junit.Test
+    public void listCategoryHappyCase() throws Exception {
+        String q=repo.addNewProduct(p1);
+        ArrayList<Product> s=repo.getProductsCategory("a");
+        assertEquals(s.size(), 1);
+    }
+
+    @org.junit.Test
+    public void listCategoryEmptyResult() throws Exception {
+        String q=repo.addNewProduct(p1);
+        ArrayList<Product> s=repo.getProductsCategory("b");
+        assertEquals(s.size(), 0);
+    }
+
 
 
 }
